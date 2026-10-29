@@ -98,8 +98,8 @@ namespace NeutrinoFluxReweight{
      /*!   Any other hadronic interaction not corrected yet   */
     double other_wgt;
     
-    MIPPNumiPionYieldsReweighter* MIPP_NUMI_PION_Universe;
-    MIPPNumiKaonYieldsReweighter* MIPP_NUMI_KAON_Universe;
+    MIPPNumiPionYieldsReweighter* MIPP_NUMI_PION_Universe = nullptr;
+    MIPPNumiKaonYieldsReweighter* MIPP_NUMI_KAON_Universe = nullptr;
     TargetAttenuationReweighter* TARG_ATT_Universe;
     AbsorptionICReweighter*   VOL_ABS_IC_Universe;
     AbsorptionDPIPReweighter* VOL_ABS_DPIP_Universe;
@@ -110,7 +110,7 @@ namespace NeutrinoFluxReweight{
     ThinTargetpCKaonReweighter* THINTARGET_PC_KAON_Universe;
     ThinTargetnCPionReweighter* THINTARGET_NC_PION_Universe;
     ThinTargetpCNucleonReweighter* THINTARGET_PC_NUCLEON_Universe;
-    ThinTargetpipCpipReweighter* THINTARGET_pipC_pip_Universe;      
+    ThinTargetpipCpipReweighter* THINTARGET_pipC_pip_Universe = nullptr;
     ThinTargetMesonIncidentReweighter* THINTARGET_MESON_INCIDENT_Universe;
 
     ThinTargetnucleonAReweighter* THINTARGET_NUCLEON_A_Universe;
