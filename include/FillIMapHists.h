@@ -26,8 +26,8 @@ struct FillIMapHistsOpts {
 
 struct FillIMapHistsReweighters {
 
-  NeutrinoFluxReweight::MIPPNumiPionYieldsReweighter* NumiPions;    
-  NeutrinoFluxReweight::MIPPNumiKaonYieldsReweighter* NumiKaons; 
+  NeutrinoFluxReweight::MIPPNumiPionYieldsReweighter* NumiPions;     // restored for MINERvA/MIPP comparison, see scripts/README.md
+  NeutrinoFluxReweight::MIPPNumiKaonYieldsReweighter* NumiKaons;
 
   NeutrinoFluxReweight::ThinTargetpCPionReweighter*         ThinTargetpCPion;
   NeutrinoFluxReweight::ThinTargetpCKaonReweighter*         ThinTargetpCKaon;

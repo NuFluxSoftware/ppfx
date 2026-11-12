@@ -1,5 +1,6 @@
 OBJS_LIB = $(shell ls src/*.cpp | sed 's/\.cpp/.o/')
 PROGS = $(shell ls src/*.C | sed 's/\.C//' | sed 's/src\///')
+BOOST_INC ?= /usr/include
 INCLUDES = -I./include -I$(shell root-config --incdir) -I${BOOST_INC} -I${DK2NU}/include
 DEPLIBS=$(shell root-config --libs) -lEG
 
@@ -23,7 +24,7 @@ $(PROGS): % : src/%.o $(OBJS_LIB)  libppfx.so
 	if [ ! -d bin ]; then mkdir -p bin; fi
 
 
-	$(CC) -Wall -o bin/$@ $< $(PPFX_OBJS) $(DEPLIBS) -L$(PPFX_DIR)/lib -lppfx -L${DK2NU}/lib -ldk2nuTree
+	$(CC) -Wall -o bin/$@ $< $(PPFX_OBJS) -L$(PPFX_DIR)/lib -lppfx -L${DK2NU}/lib -ldk2nuTree $(DEPLIBS)
 
 %.o: %.cpp
 	$(CC) $(COPTS) $(INCLUDES) -c -o $@ $<

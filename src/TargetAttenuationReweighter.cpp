@@ -321,7 +321,7 @@ namespace NeutrinoFluxReweight{
 	totmatZ /= graphite_A;
 	totmatZ *= graphite_density;	
 	wgt_sec *= fact*exp(-1.0*totmatZ*dsigma);
-	if(isinf(wgt_sec))std::cout<<"BAD "<<zi<<" "<<zf<<" "<<totmatZ<<" "<<startZ<<
+	if(std::isinf(wgt_sec))std::cout<<"BAD "<<zi<<" "<<zf<<" "<<totmatZ<<" "<<startZ<<
 	" "<<dsigma<<" "<<fact<<std::endl;
 	
       }

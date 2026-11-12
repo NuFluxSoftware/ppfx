@@ -109,7 +109,7 @@ int CreateHists(const char* output_filename, const char* filename, int elow, int
 	cout << "Filling histograms" << endl;	
 	FillIMapHistsOpts opts;
 	opts.elow=elow; opts.ehigh=ehigh; opts.nuid=nu_id;
-	opts.cut_thintarget=NA49cuts; opts.cut_na61=NA61cuts;
+	opts.cut_thintarget=NA49cuts; opts.cut_na61=NA61cuts; opts.cut_mipp=NA61cuts; // same 7th CLI arg drives MIPP cut again, restored for MINERvA/MIPP comparison
 	double total_weight=FillIMapHists(tdk2nu, tdkmeta, &hists, &opts);
 	
 	cout<< "Total weight: "<<total_weight<<endl;
