@@ -18,15 +18,15 @@ namespace NeutrinoFluxReweight{
   CentralValuesAndUncertainties* CentralValuesAndUncertainties::instance = 0;
 
   CentralValuesAndUncertainties::CentralValuesAndUncertainties(){
-     
-    r3=new TRandom3(0);    
-    r3_pip=new TRandom3(300);
+    //! Setting the seed to zero. 
+    r3=new TRandom3(0);   //Random number generator class in ROOT, seed is selected to be zero here for reproducibility 
+    r3_pip=new TRandom3(300);   //New generator for the newly introduced reweighter
     baseSeed = 0;
   }
   
   void CentralValuesAndUncertainties::readFromXML(const char* filename){
     using boost::property_tree::ptree;
-    ptree top;    
+    ptree top;    //Object of type ptree named top
     
     read_xml(filename,top,2); // option 2 removes comment strings
     
@@ -158,7 +158,7 @@ namespace NeutrinoFluxReweight{
     
   for(;it!=table_uncorr_pars.end();++it){
       double sigma= r3->Gaus(0.0,1.0);
-      double sigma2 = r3_pip->Gaus(0.0,1.0);
+      double sigma2 = r3_pip->Gaus(0.0,1.0);   //For pipCpip uncorrelated
       
       //redefining sigma for 100% correlation:
       if((it->first).find("ThinTarget_pC_pip_sys")<10)sigma = sigma_pc_pip;
@@ -170,6 +170,7 @@ namespace NeutrinoFluxReweight{
      
      //Redefination for NA61 data
         if((it->first).find("ThinTarget_pipC_pip_stat")<10)sigma = sigma2;
+  
 
      	if((it->first).find("ThinTarget_pipC_pim_stat")<10)sigma = sigma2;
         if((it->first).find("ThinTarget_pipC_kp_stat")<10)sigma = sigma2;
@@ -188,10 +189,10 @@ namespace NeutrinoFluxReweight{
     
     for(size_t ii=0;ii<covariance_matrices.size();++ii){
       
-      decomp=new TDecompSVD(covariance_matrices[ii],0.0);
+      decomp=new TDecompSVD(covariance_matrices[ii],0.0); 
       
       bool isDecomposed=decomp->Decompose();
-   // if(isDecomposed){std::cout<<"The matrix is being decomposed using SVD decomposition"<<std::endl;}
+      if(isDecomposed){std::cout<<"The matrix is being decomposed using SVD decomposition"<<std::endl;}
       TMatrixD U = decomp->GetU();
       TVectorD S = decomp->GetSig();
       TMatrixD Vt = decomp->GetV();
@@ -220,7 +221,7 @@ namespace NeutrinoFluxReweight{
     
 
 
-   TVectorD vecDShift =  ((U * Sq_matrix)* vsigma); //Second
+   TVectorD vecDShift =  ((U * Sq_matrix)* vsigma); 
 
       
       const boost::interprocess::flat_map<std::string, double>& tb = (correlated_par_tables[ii]).getMap();
@@ -238,10 +239,10 @@ namespace NeutrinoFluxReweight{
       
       
   }  
-  }           
+  }      // covariance matrix      
     return ptable; 
     
-  }       
+  }       //universe  
   
   ParameterTable CentralValuesAndUncertainties::getCVPars(){      
 

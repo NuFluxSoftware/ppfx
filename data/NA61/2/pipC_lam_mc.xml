@@ -1,0 +1,119 @@
+<mcbins>
+  <pipC_lam_mc>
+    <pipC_lam_mc_0>
+      <cvmc>0.01315567194416088</cvmc>
+      <prange>3.0 7.0</prange>
+      <thetarange>0.0 0.02</thetarange>
+    </pipC_lam_mc_0>
+    <pipC_lam_mc_1>
+      <cvmc>0.01853104676606669</cvmc>
+      <prange>7.0 13.0</prange>
+      <thetarange>0.0 0.02</thetarange>
+    </pipC_lam_mc_1>
+    <pipC_lam_mc_2>
+      <cvmc>0.02991488268535089</cvmc>
+      <prange>13.0 25.0</prange>
+      <thetarange>0.0 0.02</thetarange>
+    </pipC_lam_mc_2>
+    <pipC_lam_mc_3>
+      <cvmc>0.03576113602099743</cvmc>
+      <prange>1.5 7.0</prange>
+      <thetarange>0.02 0.04</thetarange>
+    </pipC_lam_mc_3>
+    <pipC_lam_mc_4>
+      <cvmc>0.03589148808234401</cvmc>
+      <prange>7.0 11.0</prange>
+      <thetarange>0.02 0.04</thetarange>
+    </pipC_lam_mc_4>
+    <pipC_lam_mc_5>
+      <cvmc>0.02781442032604006</cvmc>
+      <prange>11.0 23.0</prange>
+      <thetarange>0.02 0.04</thetarange>
+    </pipC_lam_mc_5>
+       <pipC_lam_mc_6>
+      <cvmc>0.05600689824573277</cvmc>
+      <prange>1.5 5.0</prange>
+      <thetarange>0.04 0.06</thetarange>
+    </pipC_lam_mc_6>
+    <pipC_lam_mc_7>
+      <cvmc>0.03960157870479970</cvmc>
+      <prange>5.0 9.0</prange>
+      <thetarange>0.04 0.06</thetarange>
+    </pipC_lam_mc_7>
+    <pipC_lam_mc_8>
+      <cvmc>0.01256249683353881</cvmc>
+      <prange>9.0 20.0</prange>
+      <thetarange>0.04 0.06</thetarange>
+    </pipC_lam_mc_8>
+       <pipC_lam_mc_9>
+      <cvmc>0.07195790789870017</cvmc>
+      <prange>1.5 4.5</prange>
+      <thetarange>0.06 0.1</thetarange>
+    </pipC_lam_mc_9>
+    <pipC_lam_mc_10>
+      <cvmc>0.04040245664350842</cvmc>
+      <prange>4.5 7.0</prange>
+      <thetarange>0.06 0.1</thetarange>
+    </pipC_lam_mc_10>
+    <pipC_lam_mc_11>
+      <cvmc>0.00654991646455888</cvmc>
+      <prange>7.0 15.0</prange>
+      <thetarange>0.06 0.1</thetarange>
+    </pipC_lam_mc_11>
+       <pipC_lam_mc_12>
+      <cvmc>0.08689228132040698</cvmc>
+      <prange>1.5 4.0</prange>
+      <thetarange>0.1 0.14</thetarange>
+    </pipC_lam_mc_12>
+    <pipC_lam_mc_13>
+      <cvmc>0.02910073153814829</cvmc>
+      <prange>4.0 6.0</prange>
+      <thetarange>0.1 0.14</thetarange>
+    </pipC_lam_mc_13>
+    <pipC_lam_mc_14>
+      <cvmc>0.00235594873797537</cvmc>
+      <prange>6.0 12.0</prange>
+      <thetarange>0.1 0.14</thetarange>
+    </pipC_lam_mc_14>
+       <pipC_lam_mc_15>
+      <cvmc>0.07940811405661839</cvmc>
+      <prange>1.5 4.0</prange>
+      <thetarange>0.14 0.18</thetarange>
+    </pipC_lam_mc_15>
+    <pipC_lam_mc_16>
+      <cvmc>0.00544348011238464</cvmc>
+      <prange>4.0 8.0</prange>
+      <thetarange>0.14 0.18</thetarange>
+    </pipC_lam_mc_16>
+       <pipC_lam_mc_17>
+      <cvmc>0.08328996304829685</cvmc>
+      <prange>1.0 3.5</prange>
+      <thetarange>0.18 0.24</thetarange>
+    </pipC_lam_mc_17>
+    <pipC_lam_mc_18>
+      <cvmc>0.00209387152474837</cvmc>
+      <prange>3.5 8.0</prange>
+      <thetarange>0.18 0.24</thetarange>
+    </pipC_lam_mc_18>
+       <pipC_lam_mc_19>
+      <cvmc>0.00776815289931127</cvmc>
+      <prange>1.0 6.0</prange>
+      <thetarange>0.24 0.3</thetarange>
+    </pipC_lam_mc_19>
+       <pipC_lam_mc_20>
+      <cvmc>0.01538819509970486</cvmc>
+      <prange>1.0 4.0</prange>
+      <thetarange>0.3 0.36</thetarange>
+    </pipC_lam_mc_20>
+ </pipC_lam_mc>
+</mcbins>
+
+      
+      
+      
+      
+      
+      
+      
+      
+      

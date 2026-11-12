@@ -11,7 +11,15 @@
 #include "MIPPNumiYieldsBins.h"
 #include "ThinTargetBins.h"
 
+//NEW ADDED BY BHUMIKA
 #include "ThinTargetpipCpipBins.h"
+//#include "ThinTargetpipCpimBins.h"
+//#include "ThinTargetpipCkpBins.h"
+//#include "ThinTargetpipCkmpBins.h"
+//#include "ThinTargetpipCpBins.h"
+//#include "ThinTargetpipCk0sBins.h"
+//#include "ThinTargetpipClamBins.h"
+//#include "ThinTargetpipCalamBins.h"
 
 #include "MIPPNumiMC.h"
 #include "ThinTargetpipCpipMC.h"
@@ -44,6 +52,8 @@ namespace NeutrinoFluxReweight{
     void SetOptions(std::string fileIn);    
     static MakeReweight* getInstance();
     static void resetInstance();
+
+    int getExp() const;     // New function to return Exp
     
     /*! calculate the weights for this event using the old flux ntuple format
      * (filled in nu_g4numi object),  the tgtcfg (the target configuration, example: le010z) 
@@ -84,6 +94,7 @@ namespace NeutrinoFluxReweight{
     
     std::vector<ParameterTable> cvPars,univPars;
     int Nuniverses;
+    int Exp;
     std::string mippCorrOption;
     std::string fileOptions;    
     std::vector<double> vec_wgts;

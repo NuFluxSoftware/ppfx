@@ -23,7 +23,11 @@ namespace NeutrinoFluxReweight{
 
     mippCorrOption = options.get<std::string>("MIPPCorrOption");
     Nuniverses = options.get<int>("NumberOfUniverses");
-    
+    Exp        =options.get<int>("Exp");    
+  }
+
+  int MakeReweight::getExp() const {
+     return Exp;
   }
   void MakeReweight::Initialize(){
     
@@ -31,6 +35,7 @@ namespace NeutrinoFluxReweight{
     CentralValuesAndUncertainties* cvu = CentralValuesAndUncertainties::getInstance();;
     MIPPNumiYieldsBins*  myb =  MIPPNumiYieldsBins::getInstance(); 
     ThinTargetBins*  thinbin =  ThinTargetBins::getInstance();
+   
     MIPPNumiMC*  mymc =  MIPPNumiMC::getInstance();
     ThinTargetpipCpipBins*  thinbinpip =    ThinTargetpipCpipBins::getInstance();
     ThinTargetpipCpipMC*    thinbinpipmc =  ThinTargetpipCpipMC::getInstance();
@@ -54,32 +59,42 @@ namespace NeutrinoFluxReweight{
     thinbin->material_scaling_from_xml(Form("%s/data/BINS/ThinTarget_material_scaling_Bins.xml",ppfxDir));
     thinbinpip->pipC_pip_from_xml(Form("%s/data/BINS/ThinTarget_pipC_pip_Bins.xml",ppfxDir));                       
     thinbinpip->pipC_pim_from_xml(Form("%s/data/BINS/ThinTarget_pipC_pim_Bins.xml",ppfxDir));              
-    thinbinpip->pipC_kp_from_xml(Form("%s/data/BINS/ThinTarget_pipC_kp_Bins.xml",ppfxDir));              
+    thinbinpip->pipC_kp_from_xml(Form("%s/data/BINS/ThinTarget_pipC_kp_Bins.xml",ppfxDir));             
     thinbinpip->pipC_km_from_xml(Form("%s/data/BINS/ThinTarget_pipC_km_Bins.xml",ppfxDir));              
-    thinbinpip->pipC_p_from_xml(Form("%s/data/BINS/ThinTarget_pipC_p_Bins.xml",ppfxDir));             
+    thinbinpip->pipC_p_from_xml(Form("%s/data/BINS/ThinTarget_pipC_p_Bins.xml",ppfxDir));              
     thinbinpip->pipC_k0s_from_xml(Form("%s/data/BINS/ThinTarget_pipC_k0s_Bins.xml",ppfxDir));              
     thinbinpip->pipC_lam_from_xml(Form("%s/data/BINS/ThinTarget_pipC_lam_Bins.xml",ppfxDir));              
     thinbinpip->pipC_alam_from_xml(Form("%s/data/BINS/ThinTarget_pipC_alam_Bins.xml",ppfxDir));              
     
-   
+      std::cout<<"Initializing MC values"<<std::endl;
     mymc->pip_mc_from_xml(Form("%s/data/MIPP/MIPPNuMI_MC_PIP.xml",ppfxDir));
     mymc->pim_mc_from_xml(Form("%s/data/MIPP/MIPPNuMI_MC_PIM.xml",ppfxDir));
     mymc->kap_mc_from_xml(Form("%s/data/MIPP/MIPPNuMI_MC_KAP.xml",ppfxDir));
     mymc->kam_mc_from_xml(Form("%s/data/MIPP/MIPPNuMI_MC_KAM.xml",ppfxDir));
     mymc->k0l_mc_from_xml(Form("%s/data/MIPP/MIPPNuMI_MC_K0L.xml",ppfxDir));
     mymc->k0s_mc_from_xml(Form("%s/data/MIPP/MIPPNuMI_MC_K0S.xml",ppfxDir));
+   //Selecting the MC values from the experiment we gave as an input (NOvA[1] or DUNE[2])
+    if(Exp==1){
+    std::cout<<"Initialising NA61 MC values for NOvA"<<std::endl;                            
+    thinbinpipmc->pipC_pip_mc_from_xml(Form("%s/data/NA61/1/pipC_pip_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_pim_mc_from_xml(Form("%s/data/NA61/1/pipC_pim_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_kp_mc_from_xml(Form("%s/data/NA61/1/pipC_kp_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_km_mc_from_xml(Form("%s/data/NA61/1/pipC_km_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_p_mc_from_xml(Form("%s/data/NA61/1/pipC_p_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_k0s_mc_from_xml(Form("%s/data/NA61/1/pipC_k0s_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_lam_mc_from_xml(Form("%s/data/NA61/1/pipC_lam_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_alam_mc_from_xml(Form("%s/data/NA61/1/pipC_alam_mc.xml",ppfxDir));}
 
-
-                          
-    thinbinpipmc->pipC_pip_mc_from_xml(Form("%s/data/NA61/pipC_pip_mc.xml",ppfxDir));
-    thinbinpipmc->pipC_pim_mc_from_xml(Form("%s/data/NA61/pipC_pim_mc.xml",ppfxDir));
-    thinbinpipmc->pipC_kp_mc_from_xml(Form("%s/data/NA61/pipC_kp_mc.xml",ppfxDir));
-    thinbinpipmc->pipC_km_mc_from_xml(Form("%s/data/NA61/pipC_km_mc.xml",ppfxDir));
-    thinbinpipmc->pipC_p_mc_from_xml(Form("%s/data/NA61/pipC_p_mc.xml",ppfxDir));
-     thinbinpipmc->pipC_k0s_mc_from_xml(Form("%s/data/NA61/pipC_k0s_mc.xml",ppfxDir));
-    thinbinpipmc->pipC_lam_mc_from_xml(Form("%s/data/NA61/pipC_lam_mc.xml",ppfxDir));
-    thinbinpipmc->pipC_alam_mc_from_xml(Form("%s/data/NA61/pipC_alam_mc.xml",ppfxDir));
-    
+    else if(Exp==2){
+        std::cout<<"Initialising NA61 MC values for DUNE"<<std::endl;                           
+    thinbinpipmc->pipC_pip_mc_from_xml(Form("%s/data/NA61/2/pipC_pip_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_pim_mc_from_xml(Form("%s/data/NA61/2/pipC_pim_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_kp_mc_from_xml(Form("%s/data/NA61/2/pipC_kp_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_km_mc_from_xml(Form("%s/data/NA61/2/pipC_km_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_p_mc_from_xml(Form("%s/data/NA61/2/pipC_p_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_k0s_mc_from_xml(Form("%s/data/NA61/2/pipC_k0s_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_lam_mc_from_xml(Form("%s/data/NA61/2/pipC_lam_mc.xml",ppfxDir));
+    thinbinpipmc->pipC_alam_mc_from_xml(Form("%s/data/NA61/2/pipC_alam_mc.xml",ppfxDir));}
     
     
     
@@ -157,7 +172,7 @@ namespace NeutrinoFluxReweight{
       map_rew_wgts["ThinTargetnCPion"].push_back(vec_rws[ii]->nC_pi_wgt);
       map_rew_wgts["ThinTargetpCNucleon"].push_back(vec_rws[ii]->pC_nu_wgt);
       map_rew_wgts["ThinTargetMesonIncident"].push_back(vec_rws[ii]->meson_inc_wgt);
-    
+   
       map_rew_wgts["ThinTargetnucleonA"].push_back(vec_rws[ii]->nuA_wgt);
       map_rew_wgts["Other"].push_back(vec_rws[ii]->other_wgt);
 

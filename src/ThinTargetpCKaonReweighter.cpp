@@ -196,7 +196,10 @@ namespace NeutrinoFluxReweight{
       //std::cout<<"TTPCK check wgt(<0) "<<iUniv<<" "<<aa.Inc_P<<" "<<aa.xF<<" "<<aa.Pt<<" "<<aa.Prod_pdg<<std::endl;
       return 1.0;
     }
-    
+     if(wgt>10){
+      //std::cout<<"TTPCK check wgt(<0) "<<iUniv<<" "<<aa.Inc_P<<" "<<aa.xF<<" "<<aa.Pt<<" "<<aa.Prod_pdg<<std::endl;
+      return 1.0;
+    }
     return wgt;
     
   }

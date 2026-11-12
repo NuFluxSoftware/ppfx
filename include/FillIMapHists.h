@@ -15,13 +15,13 @@
 #include "ThinTargetpCNucleonReweighter.h"
 #include "ThinTargetMesonIncidentReweighter.h"
 #include "ThinTargetnucleonAReweighter.h"
-#include "ThinTargetpipCpipReweighter.h"   //BHUMIKA
+#include "ThinTargetpipCpipReweighter.h"  
 
 
 struct FillIMapHistsOpts {
   float elow, ehigh;
   Int_t nuid;
-  bool cut_thintarget, cut_mipp, cut_na61;                       //BHUMIKA, introduced na61 cut
+  bool cut_thintarget, cut_mipp, cut_na61;                      
 };
 
 struct FillIMapHistsReweighters {
@@ -34,7 +34,7 @@ struct FillIMapHistsReweighters {
   NeutrinoFluxReweight::ThinTargetnCPionReweighter*         ThinTargetnCPion;
   NeutrinoFluxReweight::ThinTargetpCNucleonReweighter*      ThinTargetpCNucleon;
   NeutrinoFluxReweight::ThinTargetMesonIncidentReweighter*  ThinTargetMesonIncident;
-  NeutrinoFluxReweight::ThinTargetpipCpipReweighter*        ThinTargetpipCpip;      //Bhumika
+  NeutrinoFluxReweight::ThinTargetpipCpipReweighter*        ThinTargetpipCpip;    
 
   NeutrinoFluxReweight::ThinTargetnucleonAReweighter*       ThinTargetnucleonA;
 

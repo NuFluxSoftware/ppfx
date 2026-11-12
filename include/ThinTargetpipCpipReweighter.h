@@ -11,7 +11,7 @@
 #endif
 namespace NeutrinoFluxReweight{
   
-  /*! \class ThinTargetpCPionReweighter
+  /*! \class ThinTargetpipCpiponReweighter
    *  \brief Reweighter of thin target pion production
    */
   
@@ -20,7 +20,7 @@ namespace NeutrinoFluxReweight{
     ThinTargetpipCpipReweighter(int iuniv, const ParameterTable& cv_pars, const ParameterTable& univ_pars);
     virtual ~ThinTargetpipCpipReweighter();
     virtual bool canReweight(const InteractionData& aa);
-    virtual double calculateWeight(const InteractionData& aa);    //BHU, still have a doubt, shoud I use inter_data or aa here
+    virtual double calculateWeight(const InteractionData& aa);    
     //double calculateDataScale(int inc_pdg, double inc_mom, int prod_pdg,double xf, double pt);
 
     double data_prod_xs;

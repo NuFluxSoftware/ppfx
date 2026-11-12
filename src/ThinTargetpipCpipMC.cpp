@@ -10,11 +10,17 @@ namespace NeutrinoFluxReweight{
   ThinTargetpipCpipMC* ThinTargetpipCpipMC::instance = 0;
   
   ThinTargetpipCpipMC::ThinTargetpipCpipMC(){
-  ranges_already_filled = false;
-
+  ranges_pip_already_filled = false;
+  ranges_pim_already_filled = false;
+  ranges_kp_already_filled = false;
+  ranges_km_already_filled = false;
+  ranges_p_already_filled = false;
+  ranges_k0s_already_filled = false;
+  ranges_lam_already_filled = false;
+  ranges_alam_already_filled = false;
     //FRaction of protons not interacting in the target or Budal Monitor for
     //LE NuMI mode using FTFP.
-//    proton_no_interacting = 0.13288294;
+//    proton_no_interacting = 0.13288294;   
   }
   
   void ThinTargetpipCpipMC::pipC_pip_mc_from_xml(const char* filename){
@@ -41,15 +47,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
    
       pipC_pip_cv.push_back(cv);
-      if(ranges_already_filled==false){
-	v_pmin.push_back(pmin);
-	v_pmax.push_back(pmax);
-	v_thetamin.push_back(thetamin);
-	v_thetamax.push_back(thetamax);
+      if(ranges_pip_already_filled==false){
+	v_pip_pmin.push_back(pmin);
+	v_pip_pmax.push_back(pmax);
+	v_pip_thetamin.push_back(thetamin);
+	v_pip_thetamax.push_back(thetamax);
       }
       
     }
-    ranges_already_filled=true;
+    ranges_pip_already_filled=true;
     }
 
  void ThinTargetpipCpipMC::pipC_pim_mc_from_xml(const char* filename){
@@ -76,15 +82,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_pim_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_pim_already_filled==false){
+        v_pim_pmin.push_back(pmin);
+        v_pim_pmax.push_back(pmax);
+        v_pim_thetamin.push_back(thetamin);
+        v_pim_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_pim_already_filled=true;
     }
 
  void ThinTargetpipCpipMC::pipC_kp_mc_from_xml(const char* filename){
@@ -111,15 +117,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_kp_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_kp_already_filled==false){
+        v_kp_pmin.push_back(pmin);
+        v_kp_pmax.push_back(pmax);
+        v_kp_thetamin.push_back(thetamin);
+        v_kp_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_kp_already_filled=true;
     }
 
   void ThinTargetpipCpipMC::pipC_km_mc_from_xml(const char* filename){
@@ -146,15 +152,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_km_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_km_already_filled==false){
+        v_km_pmin.push_back(pmin);
+        v_km_pmax.push_back(pmax);
+        v_km_thetamin.push_back(thetamin);
+        v_km_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_km_already_filled=true;
     }
 
 
@@ -183,15 +189,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_p_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_p_already_filled==false){
+        v_p_pmin.push_back(pmin);
+        v_p_pmax.push_back(pmax);
+        v_p_thetamin.push_back(thetamin);
+        v_p_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_p_already_filled=true;
     }
 
 
@@ -219,15 +225,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_k0s_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_k0s_already_filled==false){
+        v_k0s_pmin.push_back(pmin);
+        v_k0s_pmax.push_back(pmax);
+        v_k0s_thetamin.push_back(thetamin);
+        v_k0s_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_k0s_already_filled=true;
     }
 
 
@@ -255,15 +261,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_lam_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_lam_already_filled==false){
+        v_lam_pmin.push_back(pmin);
+        v_lam_pmax.push_back(pmax);
+        v_lam_thetamin.push_back(thetamin);
+        v_lam_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_lam_already_filled=true;
     }
 
 
@@ -292,15 +298,15 @@ namespace NeutrinoFluxReweight{
       ss3 >> thetamin >> thetamax;
 
       pipC_alam_cv.push_back(cv);
-      if(ranges_already_filled==false){
-        v_pmin.push_back(pmin);
-        v_pmax.push_back(pmax);
-        v_thetamin.push_back(thetamin);
-        v_thetamax.push_back(thetamax);
+      if(ranges_alam_already_filled==false){
+        v_alam_pmin.push_back(pmin);
+        v_alam_pmax.push_back(pmax);
+        v_alam_thetamin.push_back(thetamin);
+        v_alam_thetamax.push_back(thetamax);
       }
 
     }
-    ranges_already_filled=true;
+    ranges_alam_already_filled=true;
     }
  
  
@@ -315,7 +321,7 @@ namespace NeutrinoFluxReweight{
     if(Prod_pdg==211){
       size = pipC_pip_cv.size();
       for(int ii=0;ii<size;++ii){
-	if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+	if(Prod_P>v_pip_pmin[ii] && Prod_P<v_pip_pmax[ii] && Theta>v_pip_thetamin[ii] && Theta<v_pip_thetamax[ii]){
 	  cvmc = pipC_pip_cv[ii];
 	}
       }      
@@ -324,7 +330,7 @@ namespace NeutrinoFluxReweight{
  if(Prod_pdg==-211){
       size = pipC_pim_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_pim_pmin[ii] && Prod_P<v_pim_pmax[ii] && Theta>v_pim_thetamin[ii] && Theta<v_pim_thetamax[ii]){
           cvmc = pipC_pim_cv[ii];
         }
       }
@@ -333,7 +339,7 @@ namespace NeutrinoFluxReweight{
  if(Prod_pdg==321){
       size = pipC_kp_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_kp_pmin[ii] && Prod_P<v_kp_pmax[ii] && Theta>v_kp_thetamin[ii] && Theta<v_kp_thetamax[ii]){
           cvmc = pipC_kp_cv[ii];
         }
       }
@@ -342,7 +348,7 @@ namespace NeutrinoFluxReweight{
   if(Prod_pdg==-321){
       size = pipC_km_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_km_pmin[ii] && Prod_P<v_km_pmax[ii] && Theta>v_km_thetamin[ii] && Theta<v_km_thetamax[ii]){
           cvmc = pipC_km_cv[ii];
         }
       }
@@ -351,7 +357,7 @@ namespace NeutrinoFluxReweight{
    if(Prod_pdg==2212){
       size = pipC_p_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_p_pmin[ii] && Prod_P<v_p_pmax[ii] && Theta>v_p_thetamin[ii] && Theta<v_p_thetamax[ii]){
           cvmc = pipC_p_cv[ii];
         }
       }
@@ -361,7 +367,7 @@ namespace NeutrinoFluxReweight{
     if(Prod_pdg==310){
       size = pipC_k0s_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_k0s_pmin[ii] && Prod_P<v_k0s_pmax[ii] && Theta>v_k0s_thetamin[ii] && Theta<v_k0s_thetamax[ii]){
           cvmc = pipC_k0s_cv[ii];
         }
       }
@@ -370,7 +376,7 @@ namespace NeutrinoFluxReweight{
      if(Prod_pdg==3122){
       size = pipC_lam_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_lam_pmin[ii] && Prod_P<v_lam_pmax[ii] && Theta>v_lam_thetamin[ii] && Theta<v_lam_thetamax[ii]){
           cvmc = pipC_lam_cv[ii];
         }
       }
@@ -378,14 +384,17 @@ namespace NeutrinoFluxReweight{
       if(Prod_pdg==-3122){
       size = pipC_alam_cv.size();
       for(int ii=0;ii<size;++ii){
-        if(Prod_P>v_pmin[ii] && Prod_P<v_pmax[ii] && Theta>v_thetamin[ii] && Theta<v_thetamax[ii]){
+        if(Prod_P>v_alam_pmin[ii] && Prod_P<v_alam_pmax[ii] && Theta>v_alam_thetamin[ii] && Theta<v_alam_thetamax[ii]){
           cvmc = pipC_alam_cv[ii];
         }
       }
     }
 
     
-   
+    //The  values store in the files correspond to the Number of hadron per POT. 
+    // But we are going to trasform to Number of hadron per interaction. 
+       
+  // cvmc /=  (1.0-proton_no_interacting);    //BHU, We need not do this for this dataset
    return cvmc;
     
   }

@@ -1,9 +1,10 @@
 <inputs>
    <Settings>
-     <!--Two modes available: MIPPNuMIOn and MIPPNuMIOff -->
+     <!--Four modes available -->
     <Reweighters>NA61On</Reweighters>
      <MIPPCorrOption>default</MIPPCorrOption>
      <NumberOfUniverses>100</NumberOfUniverses>
+     <Exp>1</Exp>     <!--Select the EXPERIMENT, Use 1 for NOvA and 2 for DUNE-->
    </Settings>
 </inputs>
 

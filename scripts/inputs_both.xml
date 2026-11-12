@@ -4,6 +4,7 @@
     <Reweighters>BothOff</Reweighters>
      <MIPPCorrOption>default</MIPPCorrOption>
      <NumberOfUniverses>100</NumberOfUniverses>
+     <Exp>1 </Exp>
    </Settings>
 </inputs>
 

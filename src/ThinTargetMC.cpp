@@ -2,13 +2,17 @@
 #include <cstdlib>
 #include <iostream>
 #include "ThinTargetMC.h"
-
+#include "MakeReweight.h"     
+#include <boost/property_tree/ptree.hpp> 
+#include <boost/property_tree/xml_parser.hpp>  
+#include "MakeReweight.h"
 
 namespace NeutrinoFluxReweight{ 
-  
+
   ThinTargetMC* ThinTargetMC::instance = 0;
   
   ThinTargetMC::ThinTargetMC(){
+   
 
     const char* ppfxDir = getenv("PPFX_DIR");
     char dirData[400]; 
@@ -30,14 +34,29 @@ namespace NeutrinoFluxReweight{
 
     int part_size = spart_prod.size();
     int mom_size  = mom_inc.size();
-
+    
+    int expValue = MakeReweight::getInstance()->getExp();
+    std::cout << "Exp Value in ThinTargetMC: " << expValue << std::endl;
+   
+   std::string model;
+   if (expValue == 1) {
+       model = "FTFP";
+   } else if (expValue == 2) {
+       model = "QGSP";
+   } else {
+       throw std::runtime_error("Invalid expValue: Expected 1 or 2");
+}
+   
     for(int i=0;i<part_size;i++){
       if(i!=idx_neu){
-	fpC_x[i] = new TFile(Form("%s/MC/FTFP/invxs_%s_FTFP_BERT.root",dirData,spart_prod[i].c_str()),"read");
+	fpC_x[i] = new TFile(Form("%s/MC/FTFP/%d/invxs_%s_%s_BERT.root",dirData,expValue,spart_prod[i].c_str(), model.c_str()),"read");
+       //std::string fileName = Form("%s/MC/FTFP/%d/invxs_%s_%s_BERT.root", dirData, expValue, spart_prod[i].c_str(), model.c_str());
+
+	//std::cout<<"The histogram being used is:"<< fileName<< std::endl;
 	for(int j=0;j<mom_size;j++)vpC_x[i].push_back((TH2D*)fpC_x[i]->Get(Form("xF_pT_%dGeV",mom_inc[j])));
       }
       else if(i==idx_neu){
-	fpC_x[i] = new TFile(Form("%s/MC/FTFP/yield_%s_FTFP_BERT.root",dirData,spart_prod[i].c_str()),"read");
+	fpC_x[i] = new TFile(Form("%s/MC/FTFP/%d/yield_%s_%s_BERT.root",dirData,expValue,spart_prod[i].c_str(), model.c_str()),"read");
 	for(int j=0;j<mom_size;j++)vpC_n.push_back((TH1D*)fpC_x[i]->Get(Form("dndxf_%dGeV",mom_inc[j])));
       }
     }
@@ -47,11 +66,11 @@ namespace NeutrinoFluxReweight{
     int qe_size = spart_qe_corr.size();
     for(int i=0;i<qe_size;i++){
       if(i<qe_size-1){
-	fqe_corr[i] = new TFile(Form("%s/MC/FTFP/invxs_qe_corr_%s.root",dirData,spart_qe_corr[i].c_str()),"read");
+	fqe_corr[i] = new TFile(Form("%s/MC/FTFP/%d/invxs_qe_corr_%s.root",dirData,expValue,spart_qe_corr[i].c_str()),"read");
 	for(size_t j=0;j<mom_inc.size();j++)vqe_corr_p.push_back((TH2D*)fqe_corr[i]->Get(Form("frac_prod_xF_pT_%dGeV",mom_inc[j])));
       }
       else if(i==(qe_size-1)){
-	fqe_corr[i] = new TFile(Form("%s/MC/FTFP/yield_qe_corr_%s.root",dirData,spart_qe_corr[i].c_str()),"read");
+	fqe_corr[i] = new TFile(Form("%s/MC/FTFP/%d/yield_qe_corr_%s.root",dirData,expValue,spart_qe_corr[i].c_str()),"read");
 	for(int j=0;j<mom_size;j++)vqe_corr_n.push_back((TH1D*)fqe_corr[i]->Get(Form("frac_prod_xf_%dGeV",mom_inc[j])));
       }      
     }

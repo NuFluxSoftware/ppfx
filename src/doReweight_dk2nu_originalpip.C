@@ -18,7 +18,7 @@
 
 //Some constants::
 
-const int NbinsE   = 400;   
+const int NbinsE   = 1200;        //Change this as desired,IMPORTANT  
 const double emin  =   0.;
 const double emax  = 120.;
 const int Nnuhel   = 4;

@@ -17,7 +17,7 @@
 #include "ThinTargetpCKaonReweighter.h"
 #include "ThinTargetnCPionReweighter.h"
 #include "ThinTargetpCNucleonReweighter.h"
-#include "ThinTargetpipCpipReweighter.h"                                  
+#include "ThinTargetpipCpipReweighter.h"                                  //BHU
 #include "ThinTargetMesonIncidentReweighter.h"
 
 #include "ThinTargetnucleonAReweighter.h"
@@ -86,7 +86,7 @@ namespace NeutrinoFluxReweight{
     double nuA_wgt;
 
    /*! NA61 pip incident weights   */
-    double pipC_pip_wgt;                                                                
+    double pipC_pip_wgt;                                                                   //BHU
     
     /*! Meson incident weights   */
     double meson_inc_wgt;
@@ -110,7 +110,7 @@ namespace NeutrinoFluxReweight{
     ThinTargetpCKaonReweighter* THINTARGET_PC_KAON_Universe;
     ThinTargetnCPionReweighter* THINTARGET_NC_PION_Universe;
     ThinTargetpCNucleonReweighter* THINTARGET_PC_NUCLEON_Universe;
-    ThinTargetpipCpipReweighter* THINTARGET_pipC_pip_Universe = nullptr;
+    ThinTargetpipCpipReweighter* THINTARGET_pipC_pip_Universe;      //BHU
     ThinTargetMesonIncidentReweighter* THINTARGET_MESON_INCIDENT_Universe;
 
     ThinTargetnucleonAReweighter* THINTARGET_NUCLEON_A_Universe;

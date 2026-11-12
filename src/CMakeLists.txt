@@ -35,7 +35,6 @@ cet_make_library(LIBRARY_NAME ppfx
                         ThinTargetpipCpipBins.cpp
                         ThinTargetpipCpipMC.cpp
                         ThinTargetpipCpipReweighter.cpp
-                        ThinTargetpipCReweighter.cpp
                  LIBRARIES PUBLIC
                         dk2nu::Tree
                         ROOT::EG

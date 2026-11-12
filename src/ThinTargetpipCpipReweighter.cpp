@@ -122,7 +122,7 @@ namespace NeutrinoFluxReweight{
     
   }
   bool ThinTargetpipCpipReweighter::canReweight(const InteractionData& aa){
-   
+    std::string mode(getenv("MODE"));
    if(aa.Proc.find("Inelastic")>100){       
      
     return false; 
@@ -133,7 +133,11 @@ namespace NeutrinoFluxReweight{
      bool corr_pro = (aa.Prod_pdg == 211 ||aa.Prod_pdg == -211 || aa.Prod_pdg == 321|| aa.Prod_pdg == -321 || aa.Prod_pdg == 310 || aa.Prod_pdg == 2212 || aa.Prod_pdg == 3122 || aa.Prod_pdg == -3122 );  
     if(corr_inc && corr_pro)return true;
     else return false;
-
+   bool is_wrong_volume = aa.Vol != "TGT1" && aa.Vol != "BudalMonitor" && aa.Vol != "Budal_HFVS" && aa.Vol != "Budal_VFHS";
+    if( (mode=="REF") || (mode=="OPT") ){
+      is_wrong_volume = aa.Vol != "TargetFinHorizontal" && aa.Vol != "TargetNoSplitSegment" && aa.Vol!="tCoreLog";
+    }
+    if(is_wrong_volume)return false;
   bool can_reweight = false;
  //int bin = -1; // this "bin" is not used
  ThinTargetpipCpipBins*  Thinbins =  ThinTargetpipCpipBins::getInstance();
@@ -208,7 +212,7 @@ return can_reweight;
     }
     
     if (bin < 0) {
-        std::cerr << "Invalid bin: " << bin << std::endl;
+        std::cerr << "Invalid bin: " << bin <<"Momentum,Theta of Produced particle are"<<" "<< aa.Prod_P<<" "<< aa.Theta<<std::endl;
         return wgt;
     } 
     
